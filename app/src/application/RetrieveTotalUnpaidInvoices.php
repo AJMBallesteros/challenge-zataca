@@ -2,7 +2,7 @@
 
 namespace App\src\application;
 
-use App\src\domain\InvoiceRepositoryInterface;
+use App\src\domain\Invoice\InvoiceRepositoryInterface;
 
 class RetrieveTotalUnpaidInvoices
 {

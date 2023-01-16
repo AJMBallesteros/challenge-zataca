@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\src\domain\InvoiceRepositoryInterface;
+use App\src\domain\Invoice\InvoiceRepositoryInterface;
 use App\src\infrastructure\InvoiceRepository;
 use Illuminate\Support\ServiceProvider;
 

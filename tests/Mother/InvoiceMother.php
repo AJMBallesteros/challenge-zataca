@@ -2,7 +2,7 @@
 
 namespace Tests\Mother;
 
-use App\src\domain\Invoice;
+use App\src\domain\Invoice\Invoice;
 
 class InvoiceMother
 {

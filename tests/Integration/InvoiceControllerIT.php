@@ -2,14 +2,21 @@
 
 namespace Tests\Integration;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\src\domain\Invoice\Exception\UnpaidInvoicesTotalAmountException;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Mother\InvoiceMother;
 use Tests\TestCase;
 
 class InvoiceControllerIT extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutExceptionHandling();
+    }
 
     public function testShouldReturnTotalFromUnpaidInvoices(): void
     {
@@ -23,5 +30,13 @@ class InvoiceControllerIT extends TestCase
         $response = $this->get(route('invoices.getUnpaidInvoices'));
         $response->assertStatus(Response::HTTP_OK);
         $this->assertStringContainsString('"importeTotal":300', $response->content());
+    }
+
+    public function testShouldThrowExceptionIfTotalIsLessThan0(){
+        $this->expectException(UnpaidInvoicesTotalAmountException::class);
+        $invoice = InvoiceMother::unpaidInvoice(-200);
+        $invoice->save();
+        $response = $this->get(route('invoices.getUnpaidInvoices'));
+        $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 }

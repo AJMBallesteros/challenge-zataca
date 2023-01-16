@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\domain;
+namespace App\src\domain\Invoice;
 
 interface InvoiceRepositoryInterface
 {

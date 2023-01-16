@@ -17,7 +17,6 @@ class InvoiceController
     public function retrieveTotalUnpaidInvoices()
     {
         $totalUnpaids = $this->retrieveTotalUnpaidInvoices->execute();
-
         return $totalUnpaids;
     }
 }
