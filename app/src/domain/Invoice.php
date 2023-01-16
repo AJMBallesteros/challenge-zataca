@@ -9,6 +9,10 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    protected $table = 'facturas';
+    protected $fillable = ['fecha_factura, total_factura, pagada'];
+    protected $connection = 'zacata';
+
     public function getFechaFacturaAttribute($value): string
     {
         return $value;

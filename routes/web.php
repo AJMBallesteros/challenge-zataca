@@ -1,5 +1,7 @@
 <?php
 
+use App\src\infrastructure\InvoiceController;
+use App\src\infrastructure\InvoiceRepository;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/web/facturacion/facturas-impagadas', [ InvoiceController::class, 'retrieveTotalUnpaidInvoices' ])->name('getUnpaidInvoices');

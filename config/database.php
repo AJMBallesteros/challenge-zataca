@@ -78,6 +78,15 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'zacata' => [
+            'driver'    => 'pgsql',
+            'host'      => env('DB_HOST_ZACATA'),
+            'port'      => env('DB_PORT_ZACATA'),
+            'database'  => env('DB_DATABASE_ZACATA'),
+            'username'  => env('DB_USERNAME_ZACATA'),
+            'password'  => env('DB_PASSWORD_ZACATA'),
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
