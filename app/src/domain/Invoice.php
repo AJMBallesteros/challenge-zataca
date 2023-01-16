@@ -11,7 +11,7 @@ class Invoice extends Model
 
     protected $table = 'facturas';
     protected $fillable = ['fecha_factura, total_factura, pagada'];
-    protected $connection = 'zacata';
+    protected $connection = 'zataca';
 
     public function getFechaFacturaAttribute($value): string
     {
