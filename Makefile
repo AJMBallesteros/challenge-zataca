@@ -30,3 +30,10 @@ db-regenerate:
 .PHONY: build
 build:
 	docker-compose build
+
+.PHONY: tests
+tests:
+	@echo '--- Running Unit Tests --- ' && \
+ 	docker-compose exec php-fpm ./vendor/bin/phpunit --testsuite=Unit && \
+ 	echo '--- Running Integration Tests --- ' && \
+ 	docker-compose exec php-fpm ./vendor/bin/phpunit --testsuite=Integration
