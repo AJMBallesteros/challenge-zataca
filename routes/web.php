@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/web/facturacion/facturas-impagadas', [ InvoiceController::class, 'retrieveTotalUnpaidInvoices' ])->name('getUnpaidInvoices');
+Route::get('/web/facturacion/facturas-impagadas', [ InvoiceController::class, 'retrieveTotalUnpaidInvoices' ])->name('invoices.getUnpaidInvoices');

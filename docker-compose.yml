@@ -1,39 +1,39 @@
 version: '3.8'
 services:
-    mariadb:
-        container_name: mariadb
-        image: 'mariadb:10.6'
+    postgres:
+        container_name: postgres
+        image: 'postgres:11.1-alpine'
         working_dir: /app
-          - ./storage/dbdata:/var/lib/mariadb
+            - ./storage/dbdata:/var/lib/postgres
         env_file:
-          - .env
+            - .env
         environment:
-            MYSQL_ROOT_PASSWORD: $DB_PASSWORD
-            MYSQL_DATABASE: $DB_DATABASE
-            MYSQL_USER: $DB_USERNAME
-            MYSQL_PASSWORD: $DB_PASSWORD
+            POSTGRES_USER: $DB_USERNAME
+            POSTGRES_PASSWORD: $DB_PASSWORD
+            POSTGRES_DB: $DB_DATABASE
         ports:
-            - '8003:3306'
+            - '8005:5432'
 
-    mariadb-test:
-        container_name: mariadb-test
-        image: 'mariadb:10.6'
+    postgres-test:
+        container_name: postgres-test
+        image: 'postgres:11.1-alpine'
+        working_dir: /app
+            - ./storage/dbdata:/var/lib/postgres
         env_file:
             - .env.testing
         environment:
-            MYSQL_ROOT_PASSWORD: $DB_PASSWORD
-            MYSQL_DATABASE: $DB_DATABASE
-            MYSQL_USER: $DB_USERNAME
-            MYSQL_PASSWORD: $DB_PASSWORD
+            POSTGRES_USER: $DB_USERNAME
+            POSTGRES_PASSWORD: $DB_PASSWORD
+            POSTGRES_DB: $DB_DATABASE
         ports:
-            - '8010:3306'
+            - '8006:5432'
 
     webserver:
         container_name: nginx
         image: 'nginx:alpine'
         working_dir: /app
         depends_on:
-          - mariadb
+          - postgres
         volumes:
             - '.:/app'
             - './env/docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'

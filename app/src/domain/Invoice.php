@@ -11,6 +11,7 @@ class Invoice extends Model
 
     protected $table = 'facturas';
     protected $fillable = ['fecha_factura, total_factura, pagada'];
+    public $timestamps = false;
     protected $connection = 'zataca';
 
     public function getFechaFacturaAttribute($value): string
@@ -20,7 +21,7 @@ class Invoice extends Model
 
     public function setFechaFacturaAttribute($value)
     {
-        $this->attributes['numeroFacturas'] = $value;
+        $this->attributes['fecha_factura'] = $value;
         return $this;
     }
 
@@ -31,7 +32,7 @@ class Invoice extends Model
 
     public function setTotalFacturaAttribute($value)
     {
-        $this->attributes['importeTotal'] = $value;
+        $this->attributes['total_factura'] = $value;
         return $this;
     }
 
@@ -42,7 +43,7 @@ class Invoice extends Model
 
     public function setPagadaAttribute($value)
     {
-        $this->attributes['fechaDesde'] = $value;
+        $this->attributes['pagada'] = $value;
         return $this;
     }
 }
