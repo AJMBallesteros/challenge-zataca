@@ -18,7 +18,7 @@ services:
         container_name: postgres-test
         image: 'postgres:11.1-alpine'
         working_dir: /app
-            - ./storage/dbdata:/var/lib/postgres
+            - ./storage/dbdata:/var/lib/postgres-test
         env_file:
             - .env.testing
         environment:
