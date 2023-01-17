@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class InvoiceRepository implements InvoiceRepositoryInterface
 {
 
-    public function getTotalUnpaidInvoices()
+    public function getTotalUnpaidInvoices(): UnpaidInvoices
     {
         $from = Carbon::now()->subMonths(1)->toDateString();
         $to = Carbon::now()->toDateString();

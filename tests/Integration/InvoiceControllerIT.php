@@ -32,7 +32,8 @@ class InvoiceControllerIT extends TestCase
         $this->assertStringContainsString('"importeTotal":300', $response->content());
     }
 
-    public function testShouldThrowExceptionIfTotalIsLessThan0(){
+    public function testShouldThrowExceptionIfTotalIsLessThan0(): void
+    {
         $this->expectException(UnpaidInvoicesTotalAmountException::class);
         $invoice = InvoiceMother::unpaidInvoice(-200);
         $invoice->save();
