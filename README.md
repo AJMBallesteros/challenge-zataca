@@ -45,3 +45,33 @@ O indicando para que se ejecute cada minuto por ejemplo en lugar de mensualmente
 ```bash
 php artisan schedule:run
 ```
+
+# Testing
+
+Para arrancar el proyecto hay que ejecutar:
+
+```bash
+make up
+```
+
+Para parar los contenedores de docker:
+
+```bash
+make down
+```
+
+El resultado de la prueba será accesible desde http://0.0.0.0:8000/web/facturacion/facturas-impagadas
+
+(*) Es posible que aparezcan errores relacionados con los permisos en el fichero /storage/logs/laravel.log. Para
+solucionarlo es necesario darle los permisos adecuados en función del usuario que ejecuta los contenedores. Como posible
+solución podemos usar en la raiz del proyecto:
+
+```code
+sudo chown -R $USER storage
+```
+
+Para ejecutar los test bastaría con ejecutar:
+
+```bash
+make tests
+```
